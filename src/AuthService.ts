@@ -1,15 +1,15 @@
-type User = {
+export type User = {
   username: string
   password: string
 }
 
-class AuthService {
+export class AuthService {
   private registeredUsers: User[] = []
 
   register (username: string, password: string): Promise<boolean> {
     return new Promise((resolve, reject) => {
       if (this.registeredUsers.find(user => user.username === username)) {
-        reject(`The user with username ${username} already exists`)
+        reject(false)
       } else {
         this.registeredUsers.push({ username, password })
         resolve(true)
@@ -26,7 +26,7 @@ class AuthService {
       if (user) {
         resolve(true)
       } else {
-        reject('The username or password is incorrect')
+        reject(false)
       }
     })
   }
