@@ -10,10 +10,11 @@ export class AuthService {
     return new Promise((resolve, reject) => {
       if (this.registeredUsers.find(user => user.username === username)) {
         reject(false)
-      } else {
-        this.registeredUsers.push({ username, password })
-        resolve(true)
+        return
       }
+
+      this.registeredUsers.push({ username, password })
+      resolve(true)
     })
   }
 
@@ -23,11 +24,12 @@ export class AuthService {
         user => user.username === username && user.password === password
       )
 
-      if (user) {
-        resolve(true)
-      } else {
+      if (!user) {
         reject(false)
+        return
       }
+
+      resolve(true)
     })
   }
 }

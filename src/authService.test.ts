@@ -37,10 +37,6 @@ describe('AuthService', () => {
       password: '1234'
     }
 
-    // await authService
-    //   .register(credentials.username, credentials.password)
-    //   .catch(error => expect(error).toBe(false))
-
     expect(
       authService.register(credentials.username, credentials.password)
     ).rejects.toBe(false)
