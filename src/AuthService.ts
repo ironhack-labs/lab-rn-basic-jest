@@ -9,6 +9,7 @@ export class AuthService {
 
     public register(username: string, password: string): Promise<boolean> {
         return new Promise((resolve) => {
+            if (username == '' || password == '') return resolve(false)
             if (this.registeredUsers.some((obj) => obj.username == username)) return resolve(false)
             this.registeredUsers.push({ username, password })
             resolve(true)
