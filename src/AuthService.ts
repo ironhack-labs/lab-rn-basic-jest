@@ -1,7 +1,7 @@
 import type { User } from "../models";
 
 export class AuthService {
-  private registeredUsers: User[] = [];
+  constructor(private readonly registeredUsers: User[] = []) {}
 
   register(username: string, password: string): Promise<boolean> {
     return new Promise((resolve) => {
