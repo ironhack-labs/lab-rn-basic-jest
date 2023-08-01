@@ -4,7 +4,7 @@
   "description": "Basic lab for jest in typescript",
   "main": "index.ts",
   "scripts": {
-    "test": "jest"
+    "test": "jest --watchAll"
   },
   "keywords": [
     "jest",

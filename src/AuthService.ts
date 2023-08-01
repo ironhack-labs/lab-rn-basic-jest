@@ -1,10 +1,10 @@
-interface Users {
+export interface Users {
   id: number;
   username: string;
   password: string;
 }
 
-class AuthService {
+export class AuthService {
 
   private readonly registeredUsers: Users[] = [
     {
@@ -31,25 +31,29 @@ class AuthService {
 
   register(username: string, password:string):Promise<boolean> {
     return new Promise((resolve, reject) => {
-      this.registeredUsers.find(user => {
-        if(user.username === username || user.password === password) {
-          reject(false)
-        } else {
-          resolve(true)
-        }
-      })
+      setTimeout(() => {
+        this.registeredUsers.find(user => {
+          if(user.username === username || user.password === password) {
+            reject(false)
+          } else {
+            resolve(true)
+          }
+        })
+      }, 2000)
     })
   }
 
   login(username: string, password: string): Promise<boolean> {
     return new Promise ((resolve, reject) => {
-      this.registeredUsers.find(user => {
-        if(user.username === username && user.password === password) {
-          resolve(true)
-        } else {
-          reject(false)
-        }
-      })
+      setTimeout(() => {
+        this.registeredUsers.find(user => {
+          if(user.username === username && user.password === password) {
+            resolve(true)
+          } else {
+            reject(false)
+          }
+        })
+      }, 2000);
     })
   }
 }
