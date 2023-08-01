@@ -1,0 +1,8 @@
+{
+  "editor.insertSpaces": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "prettier.eslintIntegration": true,
+  "editor.formatOnSave": true
+}
