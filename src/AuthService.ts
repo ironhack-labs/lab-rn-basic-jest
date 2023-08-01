@@ -7,17 +7,16 @@ class AuthService {
   registeredUsers: User[] = []
 
   register(username: string, password: string): Promise<boolean> {
-    return new Promise<boolean>((resolve, reject) => {
+    return new Promise<boolean>((resolve) => {
       const isUsernameTaken = this.registeredUsers.some(
         (user) => user.username === username
       )
 
       if (!isUsernameTaken) {
         this.registeredUsers.push({ username, password })
-        resolve(true)
-      } else {
-        reject(false)
       }
+
+      resolve(!isUsernameTaken)
     })
   }
 
@@ -31,3 +30,5 @@ class AuthService {
     })
   }
 }
+
+export default AuthService
